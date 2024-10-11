@@ -298,14 +298,14 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start mb-8 ">
             {/* logo */}
-            <div className="mb-4 md:mb-0">
-              <img src="/logo.png" alt="Hemito logo" className="h-12 w-auto" />
+            <div className="mb-4 md:mb-0" data-aos="fade-right">
+              <img src="/logo.png" alt="Hemito logo" className="h-16 w-auto" style={{ filter: "brightness(0) invert(1)"}} />
             </div>
             {/* quick links */}
-            <div className="grid grid-cols-2 gap-8 lg:gap-32 pr-5 ">
+            <div className="grid grid-cols-2 gap-8 lg:gap-32 pr-5 mt-5 ">
               <div>
-                <h3 className="font-light mb-5">quick links</h3>
-                <ul className="space-y-1 font-light">
+                <h3 className="font-light mb-5" data-aos="fade-right">quick links</h3>
+                <ul className="space-y-1 font-light" data-aos="fade-right">
                   {['about', 'services', 'portfolio', 'contact', 'blog', 'career', 'team'].map((item) => (
                     <li key={item}>
                       <a href={`#${item}`} className="hover:underline">{item}</a>
@@ -314,8 +314,8 @@ export default function Home() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-light mb-5">follow us</h3>
-                <ul className="space-y-1 font-light">
+                <h3 className="font-light mb-5" data-aos="fade-right">follow us</h3>
+                <ul className="space-y-1 font-light" data-aos="fade-right">
                   {[
                     { name: 'instagram', icon: FaInstagram },
                     { name: 'facebook', icon: FaFacebook },
@@ -332,7 +332,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className=" pt-4 ">
+          <div className=" pt-4 " data-aos="fade-right">
             <h2 className=" text-5xl lg:text-9xl font-black font-barlow mt-4 md:mt-0 ">{qualities[currentQuality]}</h2>
           </div>
           <div className="flex lg:justify-center">
