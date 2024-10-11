@@ -265,7 +265,7 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-center mb-20 mt-40 font-poppins">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="mb-8 md:mb-0 md:w-1/2">
-            <h1 className="text-7xl font-black font-barlow mb-4" data-aos="fade-right">
+            <h1 className=" text-6xl lg:text-7xl font-black font-barlow mb-4" data-aos="fade-right">
               GET A FREE<br />
               <span className="hemito-blue">CONSULTATION</span><br />
               ON
