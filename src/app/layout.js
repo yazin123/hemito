@@ -3,6 +3,7 @@ import { Poppins,Barlow_Condensed } from 'next/font/google';
 import Navbar from "@/components/Navbar";
 import SocialBar from "@/components/SocialBar";
 import ClientComponent from "./ClientComponent";
+import Footer from "@/components/Footer";
 
 
 const poppins = Poppins({
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <Navbar/>
         <SocialBar/>
         {children}
+        <Footer />
       </body>
     </html>
   );
