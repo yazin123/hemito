@@ -28,7 +28,7 @@ const CaseStudyCards = () => {
 
     return (
       <motion.div 
-        className="font-poppins flex flex-col md:flex-row items-start p-6 mb-16 rounded-xl shadow-lg mt-20"
+        className="font-poppins flex flex-col md:flex-row items-start p-6 mb-16 rounded-xl mt-20"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
