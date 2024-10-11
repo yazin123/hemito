@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
-import { FaChevronDown, FaArrowRight, FaMapPin, FaMapMarked } from "react-icons/fa";
-import React, { useEffect, useRef } from 'react';
+import { FaChevronDown, FaArrowRight, FaMapMarked, FaInstagram, FaFacebook, FaWhatsapp, FaLinkedin, FaYoutube } from "react-icons/fa";
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from "next/link";
@@ -140,7 +140,16 @@ export default function Home() {
     { title: "What are the best AI use automation Tasks for SEO", description: "In the vast digital marketplace, a distinct identity is paramount. Hemito Digital specializes in branding that resonates and endures. We delve deep into your brand's ethos, crafting a narrative and visual identity that sets you apart. With Hemito", image: "/banner.png" },
   ];
 
+  const qualities = ['CREATIVITY', 'INNOVATION', 'EXCELLENCE', 'DEDICATION', 'PASSION'];
+  const [currentQuality, setCurrentQuality] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuality((prev) => (prev + 1) % qualities.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <>
       <div className="relative h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -230,7 +239,7 @@ export default function Home() {
       {/* blog */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-center mb-20 mt-40">
         <div>
-        <h2 className="text-5xl uppercase mb-4 text-center font-barlow font-black">Blogs</h2>
+          <h2 className="text-5xl uppercase mb-4 text-center font-barlow font-black">Blogs</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-11 font-poppins">
             {blogPosts.map((post, index) => (
               <div key={index} data-aos="fade-up"
@@ -284,7 +293,53 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      {/* footer */}
+      <footer className="hemito-bg text-white p-8 font-poppins">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start mb-8 ">
+            {/* logo */}
+            <div className="mb-4 md:mb-0">
+              <img src="/logo.png" alt="Hemito logo" className="h-12 w-auto" />
+            </div>
+            {/* quick links */}
+            <div className="grid grid-cols-2 gap-8 lg:gap-32 pr-5 ">
+              <div>
+                <h3 className="font-light mb-5">quick links</h3>
+                <ul className="space-y-1 font-light">
+                  {['about', 'services', 'portfolio', 'contact', 'blog', 'career', 'team'].map((item) => (
+                    <li key={item}>
+                      <a href={`#${item}`} className="hover:underline">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-light mb-5">follow us</h3>
+                <ul className="space-y-1 font-light">
+                  {[
+                    { name: 'instagram', icon: FaInstagram },
+                    { name: 'facebook', icon: FaFacebook },
+                    { name: 'whatsapp', icon: FaWhatsapp },
+                    { name: 'linkedin', icon: FaLinkedin },
+                    { name: 'youtube', icon: FaYoutube },
+                  ].map((item) => (
+                    <li key={item.name} className="flex items-center">
+                      {/* {item.icon && <item.icon size={16} className="mr-2" />} */}
+                      <a href={`https://${item.name}.com`} className="hover:underline">{item.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className=" pt-4 ">
+            <h2 className=" text-5xl lg:text-9xl font-black font-barlow mt-4 md:mt-0 ">{qualities[currentQuality]}</h2>
+          </div>
+          <div className="flex lg:justify-center">
+            <p className="text-sm">&copy; 2024 hemito. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
       <style jsx>{`
         .animate-marquee {
           display: flex;
