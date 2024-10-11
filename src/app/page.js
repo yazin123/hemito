@@ -24,11 +24,11 @@ export default function Home() {
   const bottomBannerRef = useRef(null);
 
   const services = [
-    { id: 1, name: 'Social Media Marketing' },
-    { id: 2, name: 'Website Development' },
-    { id: 3, name: 'Content Marketing' },
-    { id: 4, name: 'SEO Optimization' },
-    { id: 5, name: 'Email Campaigns' },
+    { id: 1, name: 'Social Media Marketing', duration: 1300 },
+    { id: 2, name: 'Website Development', duration: 1400 },
+    { id: 3, name: 'Content Marketing', duration: 1500 },
+    { id: 4, name: 'SEO Optimization', duration: 1600 },
+    { id: 5, name: 'Email Campaigns', duration: 1700 },
   ];
 
   useEffect(() => {
@@ -219,7 +219,7 @@ export default function Home() {
             onClick={() => window.open('https://goo.gl/maps/your-company-location', '_blank')}>
             <div className="absolute inset-0 flex items-center justify-center">
               <Image src="/banner.png" layout="fill"
-                  objectFit="cover" alt="Hemito Logo" className="max-w-full max-h-full " />
+                objectFit="cover" alt="Hemito Logo" className="max-w-full max-h-full " />
             </div>
             <div className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-lg">
               <FaMapMarked size={24} />
@@ -230,10 +230,10 @@ export default function Home() {
       {/* blog */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-center mb-20 mt-40">
         <div>
-          <h2 className="text-2xl font-bold mb-4">Blogs</h2>
+        <h2 className="text-5xl uppercase mb-4 text-center font-barlow font-black">Blogs</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-11 font-poppins">
             {blogPosts.map((post, index) => (
-              <div key={index}
+              <div key={index} data-aos="fade-up"
                 className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform hover:scale-105"
                 onClick={() => window.location.href = `/blogs/${encodeURIComponent(post.title)}`}>
                 <img src={post.image} alt={post.title} className="w-full h-40 object-cover" />
@@ -249,6 +249,38 @@ export default function Home() {
               className=" text-white px-5 py-2 rounded-full hemito-bg transition-colors">
               View More
             </button>
+          </div>
+        </div>
+      </div>
+      {/* get a free consultation */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-center mb-20 mt-40 font-poppins">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="mb-8 md:mb-0 md:w-1/2">
+            <h1 className="text-7xl font-black font-barlow mb-4" data-aos="fade-right">
+              GET A FREE<br />
+              <span className="hemito-blue">CONSULTATION</span><br />
+              ON
+            </h1>
+            <div className="flex flex-wrap gap-3">
+              {services.map((service) => (
+                <button data-aos-duration={service.duration} data-aos="fade-right"
+                  key={service.id}
+                  className="flex items-center justify-between w-full md:w-64 hemito-bg text-white px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300"
+                >
+                  <span>{service.name}</span>
+                  <FaArrowRight />
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="md:w-1/2">
+            <Image data-aos="fade-right"
+              src="/consultation.png"
+              alt="Free Consultation"
+              width={1000}
+              height={100}
+              className="w-full h-full"
+            />
           </div>
         </div>
       </div>
