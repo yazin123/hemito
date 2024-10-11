@@ -9,7 +9,7 @@ export default function ClientComponent({ children }) {
   // Initialize AOS in client component
   useEffect(() => {
     AOS.init({
-      duration: 1500,
+      duration: 900,
       once: true,
     });
   }, []);
