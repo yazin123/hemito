@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaArrowRight, FaChevronDown, FaLightbulb, FaRegLightbulb } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import FreeConsultation from '@/components/home/FreeConsultation';
 
 const page = () => {
     const scrollToSection = () => {
@@ -102,23 +103,25 @@ const page = () => {
             {/* content */}
             <div id="serviceSection" className="relative py-20 overflow-hidden bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-52">
 
-                {services.map(item => (
-                    <div key={item.name} className="flex flex-wrap justify-between items-center mt-28">
+                {services.map((item, index) => (
+                    <div key={index} className="flex flex-wrap justify-between items-center mt-28">
                         <div className='mt-3'>
-                            <h2 className="text-5xl md:text-7xl hemito-blue mb-2 font-barlow font-black uppercase">
+                            <h2 className={`text-5xl md:text-7xl  mb-2 font-barlow font-black uppercase ${index % 2 === 1 ? 'text-black' : 'hemito-blue'}`}>
                                 {item.name}
                             </h2>
                             <p className="text-gray-600 text-sm font-poppins">
                                 {item.description}
                             </p>
                         </div>
-                        <Link href={item.href} className="hemito-bg rounded-full p-3 md:w-1/12 md:h-1/12 flex justify-center items-center mt-3">
+                        <Link href={item.href} className={` rounded-full p-3 md:w-1/12 md:h-1/12 flex justify-center items-center mt-3  ${index % 2 === 1 ? 'bg-black' : 'hemito-bg'} `}>
                             <FaArrowRight className="text-white text-xl -rotate-45 h-full w-full hover:-rotate-12 transition ease-in-out" />
                         </Link>
                     </div>
                 ))}
 
             </div>
+
+            <FreeConsultation/>
         </>
     );
 }
