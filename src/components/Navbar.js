@@ -1,7 +1,8 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaArrowRight } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaArrowRight, FaChevronRight, FaMinus, FaPlus } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 const Navbar = () => {
@@ -94,47 +95,89 @@ const Navbar = () => {
                 <div className="fixed inset-0 bg-black opacity-50 z-30" onClick={closeDropdown}></div>
             )}
 
-            {isOpen && (
-                <div ref={dropdownRef} className="fixed left-0 right-0 top-[64px] text-sm bg-white z-40 overflow-auto transition-all duration-300 ease-in-out shadow-lg font-poppins">
-                    <div className="max-w-7xl mx-auto px-4 py-8">
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                            {navLinks.map((item) => (
-                                <Link key={item.name} href={item.href} className="w-full md:hidden text-left font-semibold text-gray-800 hover:text-blue-500 focus:outline-none flex justify-between items-center lg:bg-blue-100 lg:p-3 lg:rounded-lg">
-                                    {item.name}
-                                </Link>
-                            ))}
-                            {services.map((service, index) => (
-                                <div key={index} className="space-y-2">
-                                    <button
-                                        onClick={() => toggleService(index)}
-                                        className="w-full text-left font-semibold text-gray-800 hover:text-blue-500 focus:outline-none flex justify-between items-center lg:bg-blue-100 lg:p-3 lg:rounded-lg"
-                                    >
-                                        {service.name}
-                                        {activeService === index ? <FaChevronUp className='md:hidden' /> : <FaChevronDown className='md:hidden' />}
-                                    </button>
-                                    <div className={`space-y-2 ${activeService === index ? 'block' : 'hidden md:block'} lg:bg-blue-100 lg:p-3 p-2 rounded-lg`}>
-                                        {service.subServices.map((subService, subIndex) => (
-                                            <Link
-                                                key={subIndex}
-                                                href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}/${subService.toLowerCase().replace(/\s+/g, '-')}`}
-                                                className="block text-gray-600 hover:text-blue-500"
-                                                onClick={closeDropdown}
-                                            >
-                                                {subService}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed left-0 right-0 top-[64px] bg-white z-40 overflow-hidden shadow-sm font-sans"
+                    >
+                        <div className="max-w-4xl mx-auto px-4 py-8">
+                            <motion.div
+                                className="space-y-6"
+                                variants={{
+                                    hidden: { opacity: 0 },
+                                    show: {
+                                        opacity: 1,
+                                        transition: {
+                                            staggerChildren: 0.05
+                                        }
+                                    }
+                                }}
+                                initial="hidden"
+                                animate="show"
+                            >
+                                {services.map((service, index) => (
+                                    <motion.div key={index} variants={{
+                                        hidden: { opacity: 0, y: 10 },
+                                        show: { opacity: 1, y: 0 }
+                                    }}>
+                                        <button
+                                            onClick={() => toggleService(index)}
+                                            className="w-full text-left font-medium text-gray-800 hover:text-gray-600 focus:outline-none flex justify-between items-center py-2 border-b border-gray-200 transition duration-150"
+                                        >
+                                            <span>{service.name}</span>
+                                            {activeService === index ? <FaMinus className="text-gray-400" /> : <FaPlus className="text-gray-400" />}
+                                        </button>
+                                        <AnimatePresence>
+                                            {activeService === index && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.2 }}
+                                                    className="mt-2 ml-4 space-y-2"
+                                                >
+                                                    {service.subServices.map((subService, subIndex) => (
+                                                        <motion.div
+                                                            key={subIndex}
+                                                            initial={{ opacity: 0 }}
+                                                            animate={{ opacity: 1 }}
+                                                            transition={{ delay: subIndex * 0.05 }}
+                                                        >
+                                                            <Link
+                                                                href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}/${subService.toLowerCase().replace(/\s+/g, '-')}`}
+                                                                className="block text-gray-600 hover:text-gray-800 text-sm py-1 transition duration-150"
+                                                                onClick={closeDropdown}
+                                                            >
+                                                                {subService}
+                                                            </Link>
+                                                        </motion.div>
+                                                    ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                            <motion.div
+                                className="mt-8 flex flex-wrap gap-4 md:hidden"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                            >
+                                {navLinks.map((item) => (
+                                    <Link key={item.name} href={item.href} className="text-sm text-gray-600 hover:text-gray-800 transition duration-150">
+                                        {item.name}
+                                    </Link>
+                                ))}
+                            </motion.div>
                         </div>
-                        <div className="mt-8 flex justify-center">
-                            <Link href="/services" className="hemito-bg text-white px-6 py-3 rounded-2xl w-full flex justify-center items-center gap-4 hover:bg-blue-600" onClick={closeDropdown}>
-                                View all services <FaArrowRight />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     );
 };

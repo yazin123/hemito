@@ -40,25 +40,11 @@ export default function Home() {
     <>
       {/* hero */}
       <div className="relative h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className=" bg-[#1A75BB] rounded-3xl h-4/6 w-full flex"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-        >
-
-        </motion.div>
-        <motion.button
-          className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce"
-          onClick={scrollToSection}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.6, ease: "easeInOut" }}
-        >
+        <div className="text-white text-center bg-[#1A75BB] rounded-3xl h-4/6 w-full" data-aos="fade-right">
+        </div>
+        <button className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce" onClick={scrollToSection}>
           <FaChevronDown className="text-blue-500" size={24} />
-        </motion.button>
+        </button>
       </div>
       {/* content */}
       <div id="marketingSection" className="relative py-20 overflow-hidden bg-white">
