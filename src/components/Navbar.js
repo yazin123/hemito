@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaArrowRight, FaChevronRight } from 'react-icons/fa';
+import Image from 'next/image';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +60,7 @@ const Navbar = () => {
                     <div className="flex justify-between items-center py-4">
                         {/* Logo */}
                         <Link href="/" className="flex items-center">
-                            <img src="/logo.png" alt="Hemito Logo" className="h-8 w-auto" />
+                            <Image src="/logo.png" alt="Hemito Logo" className="h-8 w-auto" width={500} height={500}/>
                         </Link>
 
                         {/* Navigation links - hidden on small screens */}
