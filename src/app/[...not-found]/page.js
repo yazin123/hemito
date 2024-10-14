@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-screen w-screen overflow-hidden">
 
             <div className="main_wrapper">
                 <div className="main">

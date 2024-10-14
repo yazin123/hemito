@@ -13,7 +13,7 @@ const SocialBar = () => {
     ];
 
     return (
-        <div className={`fixed z-50 right-0 top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out
+        <div className={`fixed z-30 lg:z-50 right-0 top-1/2 transform -translate-y-1/2 transition-all duration-300 ease-in-out
                         ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             <div className="relative flex items-center">
                 <button
