@@ -1,13 +1,14 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaArrowRight, FaChevronRight, FaMinus, FaPlus } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaArrowRight, FaChevronRight, FaMinus, FaPlus, FaCircle } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeService, setActiveService] = useState(null);
+    const [hoveredService, setHoveredService] = useState(null);
     const dropdownRef = useRef(null);
 
     const services = [
@@ -95,89 +96,132 @@ const Navbar = () => {
                 <div className="fixed inset-0 bg-black opacity-50 z-30" onClick={closeDropdown}></div>
             )}
 
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+<AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed left-0 right-0 top-[64px] bg-white z-40 overflow-hidden shadow-sm font-sans"
+        >
+          <div className="max-w-4xl mx-auto px-4 md:py-12 py-5 relative">
+            <motion.div 
+              className="space-y-2 md:space-y-8"
+              variants={{
+                hidden: { opacity: 0 },
+                show: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.07
+                  }
+                }
+              }}
+              initial="hidden"
+              animate="show"
+            >
+              {services.map((service, index) => (
+                <motion.div 
+                  key={index} 
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    show: { opacity: 1, y: 0 }
+                  }}
+                  onMouseEnter={() => setHoveredService(index)}
+                  onMouseLeave={() => setHoveredService(null)}
+                  className="relative"
+                >
+                  <motion.div
+                    className="absolute -left-4 top-0 bottom-0 w-0.5 bg-gray-200"
+                    initial={{ height: 0 }}
+                    animate={{ height: '100%' }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  />
+                  <button
+                    onClick={() => toggleService(index)}
+                    className="w-full text-left font-medium text-gray-800 hover:text-blue-600 focus:outline-none flex justify-between items-center py-2  transition duration-300"
+                  >
+                    <span className="flex items-center">
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        animate={{ scale: hoveredService === index ? 1 : 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed left-0 right-0 top-[64px] bg-white z-40 overflow-hidden shadow-sm font-sans"
-                    >
-                        <div className="max-w-4xl mx-auto px-4 py-8">
-                            <motion.div
-                                className="space-y-6"
-                                variants={{
-                                    hidden: { opacity: 0 },
-                                    show: {
-                                        opacity: 1,
-                                        transition: {
-                                            staggerChildren: 0.05
-                                        }
-                                    }
-                                }}
-                                initial="hidden"
-                                animate="show"
+                        className="mr-2"
+                      >
+                        <FaCircle className="text-blue-500" />
+                      </motion.span>
+                      {service.name}
+                    </span>
+                    {activeService === index ? <FaMinus className="text-gray-400" /> : <FaPlus className="text-gray-400" />}
+                  </button>
+                  <AnimatePresence>
+                    {activeService === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-4 ml-4 space-y-3"
+                      >
+                        {service.subServices.map((subService, subIndex) => (
+                          <motion.div
+                            key={subIndex}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: subIndex * 0.05 }}
+                          >
+                            <Link
+                              href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}/${subService.toLowerCase().replace(/\s+/g, '-')}`}
+                              className="block text-gray-600 hover:text-blue-500 text-sm py-1 transition duration-300"
+                              onClick={closeDropdown}
                             >
-                                {services.map((service, index) => (
-                                    <motion.div key={index} variants={{
-                                        hidden: { opacity: 0, y: 10 },
-                                        show: { opacity: 1, y: 0 }
-                                    }}>
-                                        <button
-                                            onClick={() => toggleService(index)}
-                                            className="w-full text-left font-medium text-gray-800 hover:text-gray-600 focus:outline-none flex justify-between items-center py-2 border-b border-gray-200 transition duration-150"
-                                        >
-                                            <span>{service.name}</span>
-                                            {activeService === index ? <FaMinus className="text-gray-400" /> : <FaPlus className="text-gray-400" />}
-                                        </button>
-                                        <AnimatePresence>
-                                            {activeService === index && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    transition={{ duration: 0.2 }}
-                                                    className="mt-2 ml-4 space-y-2"
-                                                >
-                                                    {service.subServices.map((subService, subIndex) => (
-                                                        <motion.div
-                                                            key={subIndex}
-                                                            initial={{ opacity: 0 }}
-                                                            animate={{ opacity: 1 }}
-                                                            transition={{ delay: subIndex * 0.05 }}
-                                                        >
-                                                            <Link
-                                                                href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}/${subService.toLowerCase().replace(/\s+/g, '-')}`}
-                                                                className="block text-gray-600 hover:text-gray-800 text-sm py-1 transition duration-150"
-                                                                onClick={closeDropdown}
-                                                            >
-                                                                {subService}
-                                                            </Link>
-                                                        </motion.div>
-                                                    ))}
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
-                                    </motion.div>
-                                ))}
-                            </motion.div>
-                            <motion.div
-                                className="mt-8 flex flex-wrap gap-4 md:hidden"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.2 }}
-                            >
-                                {navLinks.map((item) => (
-                                    <Link key={item.name} href={item.href} className="text-sm text-gray-600 hover:text-gray-800 transition duration-150">
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                              {subService}
+                            </Link>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </motion.div>
+            <motion.div 
+              className="mt-12 flex flex-wrap gap-6 justify-center md:hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              {navLinks.map((item, index) => (
+                <Link 
+                  key={item.name} 
+                  href={item.href} 
+                  className="text-sm text-gray-600 hover:text-blue-500 transition duration-300 relative group"
+                >
+                  {item.name}
+                  <motion.div
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500"
+                    whileHover={{ width: '100%' }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Link>
+              ))}
+            </motion.div>
+            <motion.div
+              className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full opacity-10 -z-10"
+              animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 90, 0],
+              }}
+              transition={{
+                duration: 20,
+                ease: "linear",
+                repeat: Infinity,
+              }}
+            />
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
         </>
     );
 };
