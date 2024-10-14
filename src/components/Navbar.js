@@ -110,7 +110,7 @@ const Navbar = () => {
                                         className="w-full text-left font-semibold text-gray-800 hover:text-blue-500 focus:outline-none flex justify-between items-center lg:bg-blue-100 lg:p-3 lg:rounded-lg"
                                     >
                                         {service.name}
-                                        {activeService === index ? <FaChevronUp /> : <FaChevronDown />}
+                                        {activeService === index ? <FaChevronUp className='md:hidden' /> : <FaChevronDown className='md:hidden' />}
                                     </button>
                                     <div className={`space-y-2 ${activeService === index ? 'block' : 'hidden md:block'} lg:bg-blue-100 lg:p-3 p-2 rounded-lg`}>
                                         {service.subServices.map((subService, subIndex) => (

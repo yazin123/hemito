@@ -40,11 +40,25 @@ export default function Home() {
     <>
       {/* hero */}
       <div className="relative h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-white text-center bg-[#1A75BB] rounded-3xl h-4/6 w-full" data-aos="fade-right">
-        </div>
-        <button className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce" onClick={scrollToSection}>
+        <motion.div
+          className=" bg-[#1A75BB] rounded-3xl h-4/6 w-full flex"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+
+        </motion.div>
+        <motion.button
+          className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce"
+          onClick={scrollToSection}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.6, ease: "easeInOut" }}
+        >
           <FaChevronDown className="text-blue-500" size={24} />
-        </button>
+        </motion.button>
       </div>
       {/* content */}
       <div id="marketingSection" className="relative py-20 overflow-hidden bg-white">
@@ -118,7 +132,6 @@ export default function Home() {
           <path fill="currentColor" d="M35.9,-47.3C48.3,-42.1,61.5,-35.1,67.7,-24.3C73.9,-13.4,73.1,1.3,69.7,15.5C66.3,29.7,60.3,43.3,49.9,53.3C39.5,63.3,24.8,69.7,9.7,72.5C-5.4,75.2,-20.9,74.4,-33.7,68.1C-46.5,61.8,-56.7,50,-62.3,36.9C-67.9,23.8,-68.9,9.4,-67.5,-4.3C-66,-18,-62,-31,-53.7,-40.2C-45.4,-49.5,-32.7,-55,-20.9,-58.1C-9.1,-61.2,1.9,-62,11.9,-58.6C21.9,-55.2,23.5,-52.5,35.9,-47.3Z" transform="translate(100 100)" />
         </svg>
       </div>
-
       <PostersBanners />
       <ServiceFloating />
       <CaseStudyCards />
