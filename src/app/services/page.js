@@ -32,16 +32,16 @@ const page = () => {
     }, []);
 
     const services = [
-        { name: "Business Consultancy", description: "Digital marketing is a powerful tool for businesses to reach wider audiences and achieve success.", href: "business-consultancy" },
-        { name: "Website Development", description: "We create responsive and user-friendly websites tailored to your business needs.", href: "website-development" },
-        { name: "SEO Optimization", description: "Improve your website's visibility on search engines with our expert SEO services.", href: "seo-optimization" },
-        { name: "Social Media Marketing", description: "Engage your audience and grow your brand on social media platforms.", href: "social-media-marketing" },
-        { name: "Graphic Designing", description: "Create stunning visuals that capture your brand's essence and message.", href: "graphic-designing" },
-        { name: "Mobile App Development", description: "Develop custom mobile applications to enhance your business's reach and user experience.", href: "mobile-app-development" },
-        { name: "Content Creation", description: "Craft high-quality content that resonates with your audience and drives engagement.", href: "content-creation" },
-        { name: "E-commerce Solutions", description: "Build and optimize your online store for a seamless shopping experience.", href: "ecommerce-solutions" },
-        { name: "Cloud Solutions", description: "Leverage cloud technology for better scalability and flexibility in your business operations.", href: "cloud-solutions" },
-        { name: "IT Support Services", description: "Reliable IT support to keep your business running smoothly and efficiently.", href: "it-support-services" },
+        { name: "Business Consultancy", description: "Digital marketing is a powerful tool for businesses to reach wider audiences and achieve success.", href: "/services/business-consultancy" },
+        { name: "Website Development", description: "We create responsive and user-friendly websites tailored to your business needs.", href: "/services/website-development" },
+        { name: "SEO Optimization", description: "Improve your website's visibility on search engines with our expert SEO services.", href: "/services/seo-optimization" },
+        { name: "Social Media Marketing", description: "Engage your audience and grow your brand on social media platforms.", href: "/services/social-media-marketing" },
+        { name: "Graphic Designing", description: "Create stunning visuals that capture your brand's essence and message.", href: "/services/graphic-designing" },
+        { name: "Mobile App Development", description: "Develop custom mobile applications to enhance your business's reach and user experience.", href: "/services/mobile-app-development" },
+        { name: "Content Creation", description: "Craft high-quality content that resonates with your audience and drives engagement.", href: "/services/content-creation" },
+        { name: "E-commerce Solutions", description: "Build and optimize your online store for a seamless shopping experience.", href: "/services/ecommerce-solutions" },
+        { name: "Cloud Solutions", description: "Leverage cloud technology for better scalability and flexibility in your business operations.", href: "/services/cloud-solutions" },
+        { name: "IT Support Services", description: "Reliable IT support to keep your business running smoothly and efficiently.", href: "/services/it-support-services" },
     ];
 
 

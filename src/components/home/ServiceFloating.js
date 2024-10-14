@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 const ServiceFloating = () => {
@@ -9,7 +10,7 @@ const ServiceFloating = () => {
         { id: 5, name: 'Email Campaigns', duration: 1700 },
     ];
     return (
-        <div className="banner-container flex justify-center items-center mt-20 mb-20 overflow-hidden">
+        <Link href='/services' className="banner-container flex justify-center items-center mt-20 mb-20 overflow-hidden">
             <div className="banner-content p-6 flex flex-wrap justify-center animate-marquee">
                 <div className="flex">
                     {services.map(service => (
@@ -35,7 +36,7 @@ const ServiceFloating = () => {
           }
         }
       `}</style>
-        </div>
+        </Link>
     )
 }
 
