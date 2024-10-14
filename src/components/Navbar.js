@@ -1,12 +1,11 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaArrowRight, FaChevronRight } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaChevronUp, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [isOpenNavbar, setIsOpenNavbar] = useState(false);
     const [activeService, setActiveService] = useState(null);
     const dropdownRef = useRef(null);
 
@@ -16,20 +15,19 @@ const Navbar = () => {
         { name: 'Mobile Apps', subServices: ['Service 1', 'Service 2', 'Service 3', 'Service 4'] },
         { name: 'UI/UX Design', subServices: ['Service 1', 'Service 2', 'Service 3', 'Service 4'] },
     ];
-    const navLink = [
+
+    const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'about', href: '/about' },
-        { name: 'contact', href: '/contact' },
-        { name: 'team', href: '/team' },
-        { name: 'case studies', href: '/case-studies' },
-    ]
+        { name: 'About', href: '/about' },
+        { name: 'Contact', href: '/contact' },
+        { name: 'Team', href: '/team' },
+        { name: 'Case Studies', href: '/case-studies' },
+    ];
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
         setActiveService(null);
-        setIsOpenNavbar(!isOpenNavbar)
     };
-
 
     const toggleService = (index) => {
         setActiveService(activeService === index ? null : index);
@@ -58,32 +56,28 @@ const Navbar = () => {
             <nav className="bg-white shadow-lg fixed top-0 left-0 right-0 w-full z-50 font-poppins">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex justify-between items-center py-4">
-                        {/* Logo */}
                         <Link href="/" className="flex items-center">
-                            <Image src="/logo.png" alt="Hemito Logo" className="h-8 w-auto" width={500} height={500}/>
+                            <Image src="/logo.png" alt="Hemito Logo" className="h-8 w-auto" width={500} height={500} />
                         </Link>
 
-                        {/* Navigation links - hidden on small screens */}
                         <div className="hidden md:flex space-x-4 lg:gap-10">
-                            <Link href="/" className="text-gray-800 hover:text-blue-500">Home</Link>
-                            <Link href="/about" className="text-gray-800 hover:text-blue-500">About</Link>
+                            {navLinks.map((item) => (
+                                <Link key={item.name} href={item.href} className="text-gray-800 hover:text-blue-500">
+                                    {item.name}
+                                </Link>
+                            ))}
                             <button
                                 onClick={toggleDropdown}
                                 className="text-gray-800 hover:text-blue-500 flex items-center gap-1"
                             >
                                 Services {isOpen ? <FaChevronUp className="text-sm" /> : <FaChevronDown className="text-sm" />}
                             </button>
-                            <Link href="/team" className="text-gray-800 hover:text-blue-500">Team</Link>
-                            <Link href="/case-studies" className="text-gray-800 hover:text-blue-500">Case Studies</Link>
-                            <Link href="/contact" className="text-gray-800 hover:text-blue-500">Contact</Link>
                         </div>
 
-                        {/* "Get A Quote" button */}
                         <Link href="/quote" className="hemito-bg text-white px-4 py-2 rounded hidden md:block" style={{ borderRadius: "0 16px 0 16px" }}>
                             Get A Quote
                         </Link>
 
-                        {/* Hamburger menu for small screens */}
                         <div className="md:hidden flex items-center">
                             <Link href="/quote" className="hemito-bg text-white px-4 py-2 rounded mr-2" style={{ borderRadius: "0 16px 0 16px" }}>
                                 Get A Quote
@@ -96,16 +90,19 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Dropdown menu */}
+            {isOpen && (
+                <div className="fixed inset-0 bg-black opacity-50 z-30" onClick={closeDropdown}></div>
+            )}
 
             {isOpen && (
                 <div ref={dropdownRef} className="fixed left-0 right-0 top-[64px] text-sm bg-white z-40 overflow-auto transition-all duration-300 ease-in-out shadow-lg font-poppins">
                     <div className="max-w-7xl mx-auto px-4 py-8">
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                            {navLink.map((item) => (
-                                <Link href={item.href} className="w-full md:hidden text-left font-semibold text-gray-800 hover:text-blue-500 focus:outline-none flex justify-between items-center lg:bg-blue-100 lg:p-3 lg:rounded-lg">{item.name}</Link>
-                            ))
-                            }
+                            {navLinks.map((item) => (
+                                <Link key={item.name} href={item.href} className="w-full md:hidden text-left font-semibold text-gray-800 hover:text-blue-500 focus:outline-none flex justify-between items-center lg:bg-blue-100 lg:p-3 lg:rounded-lg">
+                                    {item.name}
+                                </Link>
+                            ))}
                             {services.map((service, index) => (
                                 <div key={index} className="space-y-2">
                                     <button
