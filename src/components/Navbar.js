@@ -82,7 +82,7 @@ const Navbar = () => {
 
                         <div className="md:hidden flex items-center">
                             <Link href="/quote" className="hemito-bg text-white px-4 py-2 rounded mr-2" style={{ borderRadius: "0 16px 0 16px" }}>
-                                Get A Quote
+                                Get A Quote now
                             </Link>
                             <button onClick={toggleDropdown} className="text-gray-800 focus:outline-none">
                                 {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
