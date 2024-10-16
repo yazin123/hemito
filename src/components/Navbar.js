@@ -61,7 +61,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="bg-white shadow-lg fixed top-0 left-0 right-0 w-full z-50 font-poppins">
+            <nav className="bg-white shadow-lg fixed top-0 left-0 right-0 w-screen z-50 font-poppins">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex justify-between items-center py-4">
                         <Link href="/" className="flex items-center">
