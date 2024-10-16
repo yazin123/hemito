@@ -3,49 +3,49 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaChevronDown } from 'react-icons/fa';
 
 const page = () => {
-    const [service, setService] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const scrollToSection = () => {
+        const element = document.getElementById("serviceSection");
+        if (element) {
+            const yOffset = -30; // Adjust this value to fine-tune the scroll position
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        observer.observe(document.getElementById('serviceSection'));
+        return () => observer.disconnect();
+    }, []);
+
     const params = useParams();
     const serviceSlug = params.slug;
 
-    useEffect(() => {
-        const fetchService = async () => {
-            try {
-                const response = await fetch(`/api/services/${serviceSlug}`);
-                if (!response.ok) {
-                    throw new Error('Service not found');
-                }
-                const data = await response.json();
-                setService(data);
-                setLoading(false);
-            } catch (err) {
-                setError(err.message);
-                setLoading(false);
-            }
-        };
 
-        fetchService();
-    }, [serviceSlug]);
-
-    if (loading) {
-        return <div className="flex justify-center items-center h-screen">Loading...</div>;
-    }
-
-    if (error) {
-        return <div className="flex justify-center items-center h-screen text-red-500">{error}</div>;
-    }
-
-    if (!service) {
-        return <div className="flex justify-center items-center h-screen">Service not found</div>;
-    }
-    
     return (
         <div>
-
+            <div className="relative w-screen overflow-hidden  h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-white text-center bg-[#1A75BB] rounded-3xl h-4/6 w-full flex justify-center items-center " >
+                    <h1 className='text-center text-9xl font-barlow font-black' data-aos="fade-down">{serviceSlug.toUpperCase().replace('-',' ')}</h1>
+                </div>
+                <button className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce" onClick={scrollToSection}>
+                    <FaChevronDown className="text-blue-500" size={24} />
+                </button>
+            </div>
+            <div id="serviceSection"></div>
         </div>
     )
 }

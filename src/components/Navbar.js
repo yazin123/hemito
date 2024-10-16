@@ -178,7 +178,7 @@ const Navbar = () => {
                               transition={{ delay: subIndex * 0.05 }}
                             >
                               <Link
-                                href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}/${subService.toLowerCase().replace(/\s+/g, '-')}`}
+                                href={`/services/${subService.toLowerCase().replace(/\s+/g, '-')}`}
                                 className="block text-gray-600 hover:text-blue-500 text-sm py-1 transition duration-300"
                                 onClick={handleLinkClick}
                               >
