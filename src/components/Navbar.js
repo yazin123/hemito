@@ -194,7 +194,7 @@ const Navbar = () => {
 
               </motion.div>
               <motion.div
-                className="mt-12 flex flex-wrap gap-6 justify-center md:hidden"
+                className="mt-12 flex flex-wrap gap-6 justify-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -204,7 +204,7 @@ const Navbar = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-sm text-gray-600 hover:text-blue-500 transition duration-300 relative group"
+                    className="text-sm text-gray-600 hover:text-blue-500 transition duration-300 relative group  md:hidden"
                     onClick={handleLinkClick}
                   >
                     {item.name}
