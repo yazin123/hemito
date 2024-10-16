@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { FaArrowLeft, FaArrowRight, FaBolt, FaBullhorn, FaChartLine, FaChartPie, FaChevronDown, FaChevronRight, FaCode, FaHandshake, FaLightbulb, FaMobileAlt, FaPaintBrush, FaRocket } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import FreeConsultation from '@/components/home/FreeConsultation';
 
 
 const page = () => {
@@ -108,7 +109,7 @@ const page = () => {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.6 }}
                 >
-                    What is <span className='hemito-blue'>{title}</span> 
+                    What is <span className='hemito-blue'>{title}</span>
                 </motion.h1>
 
                 {/* Service Description */}
@@ -130,7 +131,7 @@ const page = () => {
                     Learn More
                 </motion.a>
             </motion.div>
-
+            <FreeConsultation />
         </div>
     )
 }
