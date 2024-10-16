@@ -44,8 +44,8 @@ const page = () => {
     return (
         <div>
             {/* hero */}
-            <div className="relative w-screen overflow-hidden    h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-white text-center bg-[#1A75BB] rounded-3xl h-4/6 w-full flex justify-center items-center" data-aos="fade-right">
+            <div className="relative w-screen overflow-hidden  h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-white text-center bg-[#1A75BB] rounded-3xl h-4/6 w-full flex justify-center items-center " >
                     <h1 className='text-center text-9xl font-barlow font-black'> MEET OUR TEAM</h1>
                 </div>
                 <button className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce" onClick={scrollToSection}>
