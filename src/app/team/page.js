@@ -55,7 +55,7 @@ const page = () => {
             {/* CEO */}
             <div className="mt-32 flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id='marketingSection'>
                 <div className='md:w-2/3  flex justify-end items-center md:order-1 order-2'>
-                    <div className='text-center md:text-end md:w-10/12 '>
+                    <div className='text-center md:text-start md:w-10/12 '>
                         <h3 className='font-barlow text-gray-600 font-black text-3xl md:text-5xl'>OUR CEO</h3>
                         <h1 className='font-barlow font-black md:text-9xl text-5xl hemito-blue'>Mr. JOHN DOE</h1>
                         <p className='text-justify'>
@@ -72,7 +72,7 @@ const page = () => {
             {/* DIRECTOR */}
             <div className="mt-32 flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id='marketingSection'>
                 <div className='md:w-2/3  flex justify-end items-center md:order-1 order-2'>
-                    <div className='text-center md:text-end md:w-10/12 '>
+                    <div className='text-center md:text-start md:w-10/12 '>
                         <h3 className='font-barlow text-gray-600 font-black text-3xl md:text-5xl'>OUR DIRECTOR</h3>
                         <h1 className='font-barlow font-black md:text-9xl text-5xl hemito-blue'>Mr. JOHN DOE</h1>
                         <p className='text-justify'>
