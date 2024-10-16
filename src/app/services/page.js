@@ -105,7 +105,7 @@ const page = () => {
 
                 {services.map((item, index) => (
                     <div key={index} className="flex flex-wrap justify-between items-center mt-28">
-                        <div className='mt-3'>
+                        <div className='mt-3' data-aos="fade-right">
                             <h2 className={`text-5xl md:text-7xl  mb-2 font-barlow font-black uppercase ${index % 2 === 1 ? 'text-black' : 'hemito-blue'}`}>
                                 {item.name}
                             </h2>
@@ -113,7 +113,7 @@ const page = () => {
                                 {item.description}
                             </p>
                         </div>
-                        <Link href={`/services/${item.name.toLowerCase().replace(/\s+/g, '-')}`} className={` rounded-full p-3 md:w-1/12 md:h-1/12 flex justify-center items-center mt-3  ${index % 2 === 1 ? 'bg-black' : 'hemito-bg'} `}>
+                        <Link data-aos="fade-right" href={`/services/${item.name.toLowerCase().replace(/\s+/g, '-')}`} className={` rounded-full p-3 md:w-1/12 md:h-1/12 flex justify-center items-center mt-3  ${index % 2 === 1 ? 'bg-black' : 'hemito-bg'} `}>
                             <FaArrowRight className="text-white text-xl -rotate-45 h-full w-full hover:-rotate-12 transition ease-in-out" />
                         </Link>
                     </div>
