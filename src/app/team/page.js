@@ -44,7 +44,7 @@ const page = () => {
     return (
         <div>
             {/* hero */}
-            <div className="relative h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative w-screen overflow-hidden    h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-white text-center bg-[#1A75BB] rounded-3xl h-4/6 w-full flex justify-center items-center" data-aos="fade-right">
                     <h1 className='text-center text-9xl font-barlow font-black'> MEET OUR TEAM</h1>
                 </div>
