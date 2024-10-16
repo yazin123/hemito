@@ -68,12 +68,12 @@ const Navbar = () => {
                                     {item.name}
                                 </Link>
                             ))}
-                            <button
-                                onClick={toggleDropdown}
-                                className="text-gray-800 hover:text-blue-500 flex items-center gap-1"
+                            <Link
+                                onMouseEnter={toggleDropdown}
+                                className="text-gray-800 hover:text-blue-500 flex items-center gap-1" href='/services'
                             >
                                 Services {isOpen ? <FaChevronUp className="text-sm" /> : <FaChevronDown className="text-sm" />}
-                            </button>
+                            </Link>
                         </div>
 
                         <Link href="/quote" className="hemito-bg text-white px-4 py-2 rounded hidden md:block" style={{ borderRadius: "0 16px 0 16px" }}>
@@ -179,6 +179,7 @@ const Navbar = () => {
                             </Link>
                           </motion.div>
                         ))}
+                        
                       </motion.div>
                     )}
                   </AnimatePresence>
