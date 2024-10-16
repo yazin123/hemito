@@ -24,6 +24,7 @@ const Navbar = () => {
         { name: 'Contact', href: '/contact' },
         { name: 'Team', href: '/team' },
         { name: 'Case Studies', href: '/case-studies' },
+        { name: 'Career', href: '/career' },
     ];
 
     const toggleDropdown = () => {
