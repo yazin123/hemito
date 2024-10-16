@@ -48,7 +48,7 @@ const page = () => {
     return (
         <>
             {/* hero */}
-            <div className="relative h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative w-full overflow-hidden h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     className="text-white bg-[#1A75BB] rounded-3xl h-4/6 w-full flex"
                     initial={{ opacity: 0, scale: 0.9 }}
