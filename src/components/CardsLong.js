@@ -4,24 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaQuoteLeft } from 'react-icons/fa';
 
-const CaseStudyCards = () => {
-  const caseStudies = [
-    {
-      logo: "/path-to-veza-tax-logo.png",
-      companyName: "Veza Tax",
-      description: "In the vast digital marketplace, a distinct identity is paramount. We crafted a comprehensive branding strategy for Veza Tax, elevating their visual presence and market positioning.",
-      images: ["/banner.png", "/banner.png", "/banner.png", "/banner.png", "/banner.png"],
-      testimonial: "Veza Tax's digital presence has skyrocketed since partnering with this amazing team!",
-    },
-    {
-      logo: "/path-to-aps-logo.png",
-      companyName: "APS",
-      description: "APS required a brand refresh that would resonate with their tech-savvy audience. Our team developed a modern, dynamic identity that perfectly captures their innovative spirit.",
-      images: ["/banner.png", "/banner.png", "/banner.png", "/banner.png", "/banner.png"],
-      testimonial: "Our new brand identity has positioned us as true innovators in our field.",
-      
-    },
-  ];
+const CardsLong = ({data}) => {
 
   const CaseStudyCard = ({ logo, companyName, description, images, testimonial, color }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -100,19 +83,11 @@ const CaseStudyCards = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <motion.h1 
-        className="font-barlow font-black text-center text-5xl md:text-7xl lg:text-9xl mt-20 mb-16 uppercase"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        What they have to say
-      </motion.h1>
-      {caseStudies.map((study, index) => (
+      {data.map((study, index) => (
         <CaseStudyCard key={index} {...study} />
       ))}
     </div>
   );
 };
 
-export default CaseStudyCards;
+export default CardsLong;

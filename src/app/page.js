@@ -1,14 +1,15 @@
 'use client'
 import { FaChevronDown } from "react-icons/fa";
 import FreeConsultation from "@/components/home/FreeConsultation";
-import Blogs from "@/components/blogs/BlogCards";
 import Location from "@/components/home/Location";
 import TeamBanner from "@/components/home/TeamBanner";
-import CaseStudyCards from "@/components/case-study/CaseStudyCards";
 import ServiceFloating from "@/components/home/ServiceFloating";
 import PostersBanners from "@/components/home/PostersBanners";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { blogPosts, caseStudies } from '@/api/Blog'
+import Cards from "@/components/Cards";
+import CardsLong from "@/components/CardsLong";
 
 export default function Home() {
   const scrollToSection = () => {
@@ -120,9 +121,23 @@ export default function Home() {
       </div>
       <PostersBanners />
       <ServiceFloating />
-      <CaseStudyCards />
+      <motion.h1
+        className="font-barlow font-black text-center text-5xl md:text-7xl lg:text-9xl mt-20 mb-16 uppercase"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        What they have to say
+      </motion.h1>
+      <CardsLong data={caseStudies} />
       <TeamBanner />
-      <Blogs />
+      <h2 className="text-5xl uppercase mb-4 text-center font-barlow font-black  mt-40">
+        Our <span className="hemito-blue">Insights</span>
+      </h2>
+      <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        Stay ahead of the curve with our expert analysis and cutting-edge strategies in digital marketing.
+      </p>
+      <Cards data={blogPosts} page={'blogs'} className='mb-20' />
       <Location />
       <FreeConsultation />
 

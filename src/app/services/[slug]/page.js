@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { FaArrowLeft, FaArrowRight, FaBolt, FaBullhorn, FaChartLine, FaChartPie, FaChevronDown, FaChevronRight, FaCode, FaHandshake, FaLightbulb, FaMobileAlt, FaPaintBrush, FaRocket } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import FreeConsultation from '@/components/home/FreeConsultation';
+import Cards from '@/components/Cards';
+import { worksrelated } from '@/api/Blog';
 
 
 const page = () => {
@@ -131,6 +133,11 @@ const page = () => {
                     Learn More
                 </motion.a>
             </motion.div>
+            {/* works related to the service */}
+            <h2 className="text-5xl uppercase mb-20 text-center font-barlow font-black  mt-40 ">
+                Some of <span className="hemito-blue">Our Works</span>
+            </h2>
+            <Cards data={worksrelated} page={''} />
             <FreeConsultation />
         </div>
     )
