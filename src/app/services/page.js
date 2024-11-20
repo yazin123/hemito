@@ -48,57 +48,30 @@ const page = () => {
     return (
         <>
             {/* hero */}
-            <div className="relative w-full overflow-hidden h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    className="text-white bg-[#1A75BB] rounded-3xl h-4/6 w-full flex"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                >
-                    <div className="flex flex-col justify-center w-1/2 p-8 text-left">
+            <div className="relative w-full overflow-hidden  h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-white text-center hemito-bg rounded-3xl h-4/6 w-full flex justify-center items-center " >
+                    <div className="relative z-10 text-center px-4">
                         <motion.h1
-                            className="text-5xl lg:text-8xl text-black font-barlow font-black uppercase leading-tight"
-                            initial={{ opacity: 0, y: -50 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}
+                            className="text-5xl md:text-9xl uppercase text-white mb-6 font-barlow font-black"
                         >
-                            where <br />
-                            <motion.span
-                                className="text-white"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 1, duration: 1, ease: "easeInOut" }}
-                            >
-                                creativity
-                            </motion.span> <br />
-                            knows no bounds.
+                            where creativity knows no bound
                         </motion.h1>
-                    </div>
-                    <motion.div
-                        className='flex justify-center items-center w-full h-full p-4'
-                        initial={{ opacity: 0, rotate: -20 }}
-                        animate={{ opacity: 1, rotate: 0 }}
-                        transition={{ delay: 1.2, duration: 0.8, ease: "easeInOut" }}
-                    >
-                        <motion.div
-                            animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.2, 1] }}
-                            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="text-xl text-white mb-8"
                         >
-                            <FaRegLightbulb className='w-20 h-20  md:w-52 md:h-52 ' />
-                        </motion.div>
-                    </motion.div>
-                </motion.div>
-                <motion.button
-                    className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce"
-                    onClick={scrollToSection}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.5, duration: 0.6, ease: "easeInOut" }}
-                >
+
+                        </motion.p>
+
+                    </div>
+                </div>
+                <button className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce" onClick={scrollToSection}>
                     <FaChevronDown className="text-blue-500" size={24} />
-                </motion.button>
+                </button>
             </div>
             {/* content */}
             <div id="serviceSection" className="relative py-20 overflow-hidden bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-52">

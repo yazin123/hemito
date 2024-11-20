@@ -3,6 +3,8 @@ import FreeConsultation from '@/components/home/FreeConsultation';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+
 
 const page = () => {
     const scrollToSection = () => {
@@ -44,14 +46,31 @@ const page = () => {
     return (
         <div>
             {/* hero */}
-            <div className="relative w-full overflow-hidden  h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-white text-center bg-[#1A75BB] rounded-3xl h-4/6 w-full flex justify-center items-center " >
-                    <h1 className='text-center text-9xl font-barlow font-black'> MEET OUR TEAM</h1>
-                </div>
-                <button className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce" onClick={scrollToSection}>
-                    <FaChevronDown className="text-blue-500" size={24} />
-                </button>
-            </div>
+            <div className="relative w-full overflow-hidden font-poppins  h-screen flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-white text-center hemito-bg rounded-3xl h-4/6 w-full flex justify-center items-center " >
+          <div className="relative z-10 text-center px-4">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-9xl uppercase text-white mb-6 font-barlow font-black"
+            >
+              Meet Our Team
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-xl text-white mb-8"
+            >
+              the hub of professionals
+            </motion.p>
+
+          </div>
+        </div>
+        <button className="absolute bottom-8 border border-[#1A75BB] transform -translate-x-1/2 bg-white rounded-full p-4 animate-bounce" onClick={scrollToSection}>
+          <FaChevronDown className="text-blue-500" size={24} />
+        </button>
+      </div>
             {/* CEO */}
             <div className="mt-32 flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id='marketingSection'>
                 <div className='md:w-2/3  flex justify-end items-center md:order-1 order-2'>

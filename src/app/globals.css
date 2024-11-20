@@ -13,7 +13,9 @@
 
 
 .hemito-bg {
-  background-color: #1A75BB;
+  background: rgb(14, 106, 177);
+  background: linear-gradient(132deg, rgba(14, 106, 177, 1) 0%, rgba(10, 56, 91, 1) 100%);
+
 }
 
 .hemito-blue {
