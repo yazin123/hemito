@@ -37,7 +37,7 @@ export default function Careers() {
         const fetchVacancies = async () => {
             try {
                 const response = await fetch(
-                    `process.env.NEXT_PUBLIC_BACKEND_URLcareer/vacancies?page=${currentPage}&limit=${itemsPerPage}&search=${searchTerm}&type=${filterType}`
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}career/vacancies?page=${currentPage}&limit=${itemsPerPage}&search=${searchTerm}&type=${filterType}`
                 );
                 const data = await response.json();
                 setVacancies(data.vacancies);
