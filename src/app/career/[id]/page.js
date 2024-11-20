@@ -32,7 +32,7 @@ export default function CareerDetails({ params }) {
     useEffect(() => {
         const fetchVacancyDetails = async () => {
             try {
-                const response = await fetch(`http://localhost:5001/api/career/vacancies/${params.id}`);
+                const response = await fetch(`process.env.NEXT_PUBLIC_BACKEND_URLcareer/vacancies/${params.id}`);
                 const data = await response.json();
                 setVacancy(data);
                 setLoading(false);
@@ -216,7 +216,7 @@ function ApplicationForm({ vacancy }) {
 
         try {
             const response = await fetch(
-                `http://localhost:5001/api/career/apply/${vacancy._id}`,
+                `process.env.NEXT_PUBLIC_BACKEND_URLcareer/apply/${vacancy._id}`,
                 {
                     method: 'POST',
                     body: formDataToSend

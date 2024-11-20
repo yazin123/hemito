@@ -45,7 +45,7 @@ const CVSubmissionSection = () => {
     formPayload.append('cv', formData.cv);
 
     try {
-      const response = await fetch('http://localhost:5001/api/career/submit-cv', {
+      const response = await fetch('process.env.NEXT_PUBLIC_BACKEND_URLcareer/submit-cv', {
         method: 'POST',
         body: formPayload
       });
